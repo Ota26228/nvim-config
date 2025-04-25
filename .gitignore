@@ -1,0 +1,16 @@
+# 不要なアプリケーションキャッシュなど
+../discord/
+../eas-cli-nodejs/
+../fcitx5/
+../kiorc
+../mozc/
+../neofetch/
+../waybar/
+../wesnoth/
+
+# 一般的に不要なファイル
+*.log
+*.ldb
+*.swp
+*.bak
+p
