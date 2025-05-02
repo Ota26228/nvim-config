@@ -14,7 +14,7 @@ vim.o.clipboard = "unnamedplus"
 vim.cmd("syntax on")
 vim.cmd("set background=dark")
 vim.o.showmode = false
-
+vim.opt.showtabline = 2
 -- 英語表示
 pcall(function()
   vim.o.langmenu = "en_US.UTF-8"
@@ -28,7 +28,7 @@ require("lazy").setup("plugins")  -- plugins フォルダを読み込む
 -- <leader>t で下に小さめのターミナルを開く
 vim.keymap.set("n", "<leader>t", function()
   vim.cmd("belowright split term://$SHELL") -- シェルで分割ターミナル起動
-  vim.cmd("resize 10")                      -- 高さ10行に制限
+  vim.cmd("resize 6")                      -- 高さ10行に制限
 end, { noremap = true, silent = true })
 
 
@@ -52,3 +52,22 @@ vim.api.nvim_create_user_command("Todo", function()
   -- ファイルを開く
   vim.cmd("edit " .. full_path)
 end, {})
+
+
+
+
+-- ノーマルモードでIMEをオフにする（fcitx5）
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.fn.system("fcitx5-remote -c")
+  end,
+})
+
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.fn.system("fcitx5-remote -c")  -- IMEをOFFにする
+  end,
+})
+
+vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "次のバッファへ" })

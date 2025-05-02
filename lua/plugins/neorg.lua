@@ -17,14 +17,20 @@ return {
             default_workspace = "notes",
           },
         },
+        -- ✅ TODOトグル機能を有効化
+        ["core.qol.todo_items"] = {},
+
+        -- ✅ キーマップ設定（<leader>td でトグル）
         ["core.keybinds"] = {
           config = {
-            default_keybinds = true,
+            default_keybinds = false,
+            hook = function(keybinds)
+              keybinds.map("norg", "n", "<leader>ff", "<cmd>Neorg keybind norg core.qol.todo_items.todo.task_cycle<CR>")
+            end,
           },
         },
-        -- 必要ならこれも追加
-        -- ["core.integrations.telescope"] = {},
       },
     })
   end,
 }
+
