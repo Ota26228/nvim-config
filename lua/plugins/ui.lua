@@ -9,5 +9,5 @@ return {
     "nvim-tree/nvim-web-devicons",
     lazy = true
   },
-}  -- ← ← ← このカッコ忘れてない？
+  }
  

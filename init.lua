@@ -70,4 +70,12 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   end,
 })
 
-vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "次のバッファへ" })
+
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern="norg",
+    callback=function() 
+        -- ノーマルモードでTabキーにfold toggle(za)を割り当てる
+        vim.keymap.set("n","<Tab>","za",{ buffer = true, silent=true })
+    end,
+})
